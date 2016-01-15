@@ -115,7 +115,9 @@ dir {{ redis_db_dir }}
 {% if redis_role == 'slave' %}
 slaveof {{ redis_master_ip }} {{ redis_master_port }}
 
+{% if redis_master_auth %}
 masterauth {{ redis_master_auth }}
+{% endif %}
 
 slave-serve-stale-data yes
 
